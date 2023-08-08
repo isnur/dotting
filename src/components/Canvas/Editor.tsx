@@ -2482,6 +2482,11 @@ export default class Editor extends EventDispatcher {
     this.renderDataLayer();
   }
 
+  clearHistory() {
+    this.undoHistory = [];
+    this.redoHistory = [];
+  }
+
   downloadImage(props?: ImageDownloadOptions) {
     const data = this.dataLayer.getData();
     const imageCanvas = document.createElement("canvas");

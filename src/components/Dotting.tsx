@@ -47,6 +47,7 @@ export interface DottingProps {
 export interface DottingRef {
   // for useDotting
   clear: () => void;
+  clearHistory: () => void;
   colorPixels: (data: Array<PixelModifyItem>) => void;
   erasePixels: (data: Array<{ rowIndex: number; columnIndex: number }>) => void;
   downloadImage: (options?: ImageDownloadOptions) => void;
@@ -480,6 +481,8 @@ const Dotting = forwardRef<DottingRef, DottingProps>(function Dotting(
 
   const clear = useCallback(() => editor?.clear(), [editor]);
 
+  const clearHistory = useCallback(() => editor?.clearHistory(), [editor]);
+
   const colorPixels = useCallback(
     (
       changes: Array<{
@@ -557,6 +560,7 @@ const Dotting = forwardRef<DottingRef, DottingProps>(function Dotting(
     () => ({
       // for useDotting
       clear,
+      clearHistory,
       colorPixels,
       erasePixels,
       downloadImage,
@@ -586,6 +590,7 @@ const Dotting = forwardRef<DottingRef, DottingProps>(function Dotting(
     [
       // for useDotting
       clear,
+      clearHistory,
       colorPixels,
       erasePixels,
       downloadImage,
